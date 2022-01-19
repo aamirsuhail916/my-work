@@ -1,0 +1,434 @@
+Assignment No. 1
+Ans 1
+> db.data.find().pretty()
+{
+        "_id" : ObjectId("61e84e7ff58823dc26fca2d4"),
+        "title" : "Fight club",
+        "writer" : "Chuck Palahniuko",
+        "Year" : 1999,
+        "actors" : [
+                "Brad pitt",
+                "Edward Norton"
+        ]
+}
+{
+        "_id" : ObjectId("61e84f21f58823dc26fca2e8"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "Year" : 1994,
+        "actors" : [
+                "John Travolta",
+                "Uma Thurman"
+        ]
+}
+{
+        "_id" : ObjectId("61e84f21f58823dc26fca2e9"),
+        "title" : "Inglorious Basterds",
+        "writer" : "Quentin Tarantino",
+        "Year" : 2009,
+        "actors" : [
+                "Brad pitt",
+                "Diane Kruger",
+                "Eli Roth"
+        ]
+}
+{
+        "_id" : ObjectId("61e84f21f58823dc26fca2ea"),
+        "title" : "The Hobbit: An Unexpected Journey",
+        "writer" : "J.R.R Tolkein",
+        "Year" : 2012,
+        "franchise" : "The Hobbit"
+}
+{
+        "_id" : ObjectId("61e84f21f58823dc26fca2eb"),
+        "title" : "The Hobbit: The Desolation of Smaug",
+        "writer" : "J.R.R Tolkein",
+        "Year" : 2013,
+        "franchise" : "The Hobbit",
+        "synopsis" : "Bilbo and Company are forced are to engage in a war against an array of combatants and keep the Lonely Mountain from falling into the hands of a rising darkness."
+}
+{
+        "_id" : ObjectId("61e84f21f58823dc26fca2ec"),
+        "title" : "Pee Wee Herman's Big Adventure"
+}
+{ "_id" : ObjectId("61e84f21f58823dc26fca2ed"), "title" : "Avatar" }
+>**********************************************************************************
+Ans 2
+> db.movies.find({writer:"Quentin Tarantino"}).pretty()
+{
+        "_id" : ObjectId("61e84ea2f58823dc26fca2d5"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "Year" : 1994,
+        "actors" : [
+                "John Travolta",
+                "Uma Thurman",
+                "Samuel L. Jackson"
+        ]
+}
+{
+        "_id" : ObjectId("61e84ea2f58823dc26fca2d6"),
+        "title" : "Inglorious Basterds",
+        "writer" : "Quentin Tarantino",
+        "Year" : 2009,
+        "actors" : [
+                "Brad pitt",
+                "Diane Kruger",
+                "Eli Roth"
+        ]
+}
+**********************************************************************************************
+Ans 3
+> db.movies.find({actors:"Brad pitt"}).pretty()
+{
+        "_id" : ObjectId("61e84ea2f58823dc26fca2d6"),
+        "title" : "Inglorious Basterds",
+        "writer" : "Quentin Tarantino",
+        "Year" : 2009,
+        "actors" : [
+                "Brad pitt",
+                "Diane Kruger",
+                "Eli Roth"
+        ]
+}
+***************************************************************************************************
+Ans 4
+> db.movies.find({franchise:"The Hobbit"}).pretty()
+{
+        "_id" : ObjectId("61e84ea2f58823dc26fca2d7"),
+        "title" : "The Hobbit: An Unexpected Journey",
+        "writer" : "J.R.R Tolkein",
+        "Year" : 2012,
+        "franchise" : "The Hobbit",
+        "synopsis" : "A reluctant hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home - and the gold within it - from the dragon Smaug."
+}
+{
+        "_id" : ObjectId("61e84ea2f58823dc26fca2d8"),
+        "title" : "The Hobbit: The Desolation of Smaug",
+        "writer" : "J.R.R Tolkein",
+        "Year" : 2013,
+        "franchise" : "The Hobbit",
+        "synopsis" : "The dwarves, along with Bilbo Baggins and Gandalf the Grey, continue their quest to reclaim Erebor, their homeland, from Smaug. Bilbo Baggins is in possession of a mysterious and magical ring."
+}
+*************************************************************************************
+Ans5
+> db.movies.find({$and:[{Year:{$gt:1900}},{Year:{$lt:2000}}]}).pretty()
+{
+        "_id" : ObjectId("61e84ea2f58823dc26fca2d5"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "Year" : 1994,
+        "actors" : [
+                "John Travolta",
+                "Uma Thurman",
+                "Samuel L. Jackson"
+        ]
+}
+>******************************************************************************
+Ans 6
+> db.movies.find({$or:[{Year:{$lt:2000}},{Year:{$gt:2010}}]}).pretty()
+{
+        "_id" : ObjectId("61e84ea2f58823dc26fca2d5"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "Year" : 1994,
+        "actors" : [
+                "John Travolta",
+                "Uma Thurman",
+                "Samuel L. Jackson"
+        ]
+}
+{
+        "_id" : ObjectId("61e84ea2f58823dc26fca2d7"),
+        "title" : "The Hobbit: An Unexpected Journey",
+        "writer" : "J.R.R Tolkein",
+        "Year" : 2012,
+        "franchise" : "The Hobbit",
+        "synopsis" : "A reluctant hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home - and the gold within it - from the dragon Smaug."
+}
+{
+        "_id" : ObjectId("61e84ea2f58823dc26fca2d8"),
+        "title" : "The Hobbit: The Desolation of Smaug",
+        "writer" : "J.R.R Tolkein",
+        "Year" : 2013,
+        "franchise" : "The Hobbit",
+        "synopsis" : "The dwarves, along with Bilbo Baggins and Gandalf the Grey, continue their quest to reclaim Erebor, their homeland, from Smaug. Bilbo Baggins is in possession of a mysterious and magical ring."
+}
+******************************************************************************
+Ans 7
+> db.data.updateOne({title:"The Hobbit: An Unexpected Journey"},{$set:{synopsis: "A reluctant hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home - and the gold within it - from the dragon Smaug."}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+************************************************************************
+ans 8
+> db.data.updateOne({title:"The Hobbit: The Desolation of Smaug"},{$set:{synopsis:"The dwarves, along with Bilbo Baggins and Gandalf the Grey, continue their quest to reclaim Erebor, their homeland, from Smaug. Bilbo Baggins is in possession of a mysterious and magical ring."}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+*****************************************************************************
+Ans9
+> db.data.updateOne({title:"Pulp Fiction"},{$push:{actors:"Samuel L. Jackson"}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+****************************************************************************************
+                         text search
+Ans 1 to 5
+> db.data.find()
+{ "_id" : ObjectId("61e84e7ff58823dc26fca2d4"), "title" : "Fight club", "writer" : "Chuck Palahniuko", "Year" : 1999, "actors" : [ "Brad pitt", "Edward Norton" ] }
+{ "_id" : ObjectId("61e84f21f58823dc26fca2e8"), "title" : "Pulp Fiction", "writer" : "Quentin Tarantino", "Year" : 1994, "actors" : [ "John Travolta", "Uma Thurman", "Samuel L. Jackson" ] }
+{ "_id" : ObjectId("61e84f21f58823dc26fca2e9"), "title" : "Inglorious Basterds", "writer" : "Quentin Tarantino", "Year" : 2009, "actors" : [ "Brad pitt", "Diane Kruger", "Eli Roth" ] }
+{ "_id" : ObjectId("61e84f21f58823dc26fca2ea"), "title" : "The Hobbit: An Unexpected Journey", "writer" : "J.R.R Tolkein", "Year" : 2012, "franchise" : "The Hobbit", "synopsis" : "A reluctant hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home - and the gold within it - from the dragon Smaug." }
+{ "_id" : ObjectId("61e84f21f58823dc26fca2eb"), "title" : "The Hobbit: The Desolation of Smaug", "writer" : "J.R.R Tolkein", "Year" : 2013, "franchise" : "The Hobbit", "synopsis" : "The dwarves, along with Bilbo Baggins and Gandalf the Grey, continue their quest to reclaim Erebor, their homeland, from Smaug. Bilbo Baggins is in possession of a mysterious and magical ring." }
+{ "_id" : ObjectId("61e84f21f58823dc26fca2ec"), "title" : "Pee Wee Herman's Big Adventure" }
+{ "_id" : ObjectId("61e84f21f58823dc26fca2ed"), "title" : "Avatar" }
+> db.data.find({$text: {$search: "gold dragon"}})
+{ "_id" : ObjectId("61e84f21f58823dc26fca2ea"), "title" : "The Hobbit: An Unexpected Journey", "writer" : "J.R.R Tolkein", "Year" : 2012, "franchise" : "The Hobbit", "synopsis" : "A reluctant hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home - and the gold within it - from the dragon Smaug." }
+> db.data.find({$text: {$search: "dwarves hobbit"}})
+{ "_id" : ObjectId("61e84f21f58823dc26fca2ea"), "title" : "The Hobbit: An Unexpected Journey", "writer" : "J.R.R Tolkein", "Year" : 2012, "franchise" : "The Hobbit", "synopsis" : "A reluctant hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home - and the gold within it - from the dragon Smaug." }
+{ "_id" : ObjectId("61e84f21f58823dc26fca2eb"), "title" : "The Hobbit: The Desolation of Smaug", "writer" : "J.R.R Tolkein", "Year" : 2013, "franchise" : "The Hobbit", "synopsis" : "The dwarves, along with Bilbo Baggins and Gandalf the Grey, continue their quest to reclaim Erebor, their homeland, from Smaug. Bilbo Baggins is in possession of a mysterious and magical ring." }
+> db.data.find({$text: {$search: "Bilbo -Gandalf"}})
+{ "_id" : ObjectId("61e84f21f58823dc26fca2ea"), "title" : "The Hobbit: An Unexpected Journey", "writer" : "J.R.R Tolkein", "Year" : 2012, "franchise" : "The Hobbit", "synopsis" : "A reluctant hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home - and the gold within it - from the dragon Smaug." }
+> db.data.find({$text: {$search: "Gandalf"}})
+{ "_id" : ObjectId("61e84f21f58823dc26fca2eb"), "title" : "The Hobbit: The Desolation of Smaug", "writer" : "J.R.R Tolkein", "Year" : 2013, "franchise" : "The Hobbit", "synopsis" : "The dwarves, along with Bilbo Baggins and Gandalf the Grey, continue their quest to reclaim Erebor, their homeland, from Smaug. Bilbo Baggins is in possession of a mysterious and magical ring." }
+> db.data.find({$text:{$search:"Biblo"}})
+***********************************************************
+                delete document
+> db.data.remove({title: "Pee Wee Herman's Big Adventure"})
+WriteResult({ "nRemoved" : 1 })
+> db.data.remove({title: "Avatar"})
+WriteResult({ "nRemoved" : 1 })
+>
+************************************************************************************************
+                Querying realted Collections
+> db.users.insertMany([{username:"GoodGuyGreg",first_name:"Good Guy",last_name:"Greg"},{username:"ScumbagSteve",full_name:"",first:"Scumbag",last:"Steve"}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("61e858bc7690fb750186256c"),
+                ObjectId("61e858bc7690fb750186256d")
+        ]
+}
+> db.posts.insertMany([{username : "GoodGuyGreg", title : "Passes out at party", body : "Wakes up early and cleans house"},{username : "GoodGuyGreg", title : "Steals your identity", body : "Raises your credit score"},{username : "GoodGuyGreg", title : "Reports a bug in your code", body : "Sends you a Pull Request"},{username : "ScumbagSteve", title : "Borrows something", body : "Sells it"},{username : "ScumbagSteve", title : "Borrows everything", body : "The end"},{username : "ScumbagSteve", title : "Forks your repo on github" ,body :"Sets to private"}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("61e858f07690fb750186256e"),
+                ObjectId("61e858f07690fb750186256f"),
+                ObjectId("61e858f07690fb7501862570"),
+                ObjectId("61e858f07690fb7501862571"),
+                ObjectId("61e858f07690fb7501862572"),
+                ObjectId("61e858f07690fb7501862573")
+        ]
+}
+> db.comments.insertMany([{username : "GoodGuyGreg",comment : "Hope you got a good deal!",post :"61e5c67bc04247c55c3dff83"},{username : "GoodGuyGreg",comment : "What's mine is yours!",post : "61e5c67bc04247c55c3dff84"},{username : "GoodGuyGreg",comment : "Don't violate the licensing agreement!",post : "61e5c67bc04247c55c3dff85"},{username : "ScumbagSteve",comment : "It still isn't clean",post : "61e5c67bc04247c55c3dff80"},{username : "ScumbagSteve",comment : "Denied your PR cause I found a hack",post : "61e5c67bc04247c55c3dff82"}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("61e859117690fb7501862574"),
+                ObjectId("61e859117690fb7501862575"),
+                ObjectId("61e859117690fb7501862576"),
+                ObjectId("61e859117690fb7501862577"),
+                ObjectId("61e859117690fb7501862578")
+        ]
+}
+> db.users.find().pretty()
+{
+        "_id" : ObjectId("61e84ea3f58823dc26fca2db"),
+        "username" : "GoodGuyGreg",
+        "first_name" : "Good Guy",
+        "last_name" : "Greg"
+}
+{
+        "_id" : ObjectId("61e84ea3f58823dc26fca2dc"),
+        "username" : "ScumbagSteve",
+        "full_name" : "",
+        "first" : "Scumbag",
+        "last" : "Steve"
+}
+{
+        "_id" : ObjectId("61e858bc7690fb750186256c"),
+        "username" : "GoodGuyGreg",
+        "first_name" : "Good Guy",
+        "last_name" : "Greg"
+}
+{
+        "_id" : ObjectId("61e858bc7690fb750186256d"),
+        "username" : "ScumbagSteve",
+        "full_name" : "",
+        "first" : "Scumbag",
+        "last" : "Steve"
+}
+> db.post.find().pretty()
+> b.posts.find().pretty
+uncaught exception: ReferenceError: b is not defined :
+@(shell):1:1
+> db.posts.find().pretty
+function() {
+    this._prettyShell = true;
+    return this;
+}
+> db.posts.find({username:"GoodGuyGreg"}).pretty()
+{
+        "_id" : ObjectId("61e84ea3f58823dc26fca2dd"),
+        "username" : "GoodGuyGreg",
+        "title" : "Passes out at party",
+        "body" : "Wakes up early and cleans house"
+}
+{
+        "_id" : ObjectId("61e84ea3f58823dc26fca2de"),
+        "username" : "GoodGuyGreg",
+        "title" : "Steals your identity",
+        "body" : "Raises your credit score"
+}
+{
+        "_id" : ObjectId("61e84ea3f58823dc26fca2df"),
+        "username" : "GoodGuyGreg",
+        "title" : "Reports a bug in your code",
+        "body" : "Sends you a Pull Request"
+}
+{
+        "_id" : ObjectId("61e858f07690fb750186256e"),
+        "username" : "GoodGuyGreg",
+        "title" : "Passes out at party",
+        "body" : "Wakes up early and cleans house"
+}
+{
+        "_id" : ObjectId("61e858f07690fb750186256f"),
+        "username" : "GoodGuyGreg",
+        "title" : "Steals your identity",
+        "body" : "Raises your credit score"
+}
+{
+        "_id" : ObjectId("61e858f07690fb7501862570"),
+        "username" : "GoodGuyGreg",
+        "title" : "Reports a bug in your code",
+        "body" : "Sends you a Pull Request"
+}
+> db.posts.find({username: "ScumbagSteve"}).pretty()
+{
+        "_id" : ObjectId("61e84ea3f58823dc26fca2e0"),
+        "username" : "ScumbagSteve",
+        "title" : "Borrows something",
+        "body" : "Sells it"
+}
+{
+        "_id" : ObjectId("61e84ea3f58823dc26fca2e1"),
+        "username" : "ScumbagSteve",
+        "title" : "Borrows everything",
+        "body" : "The end"
+}
+{
+        "_id" : ObjectId("61e84ea3f58823dc26fca2e2"),
+        "username" : "ScumbagSteve",
+        "title" : "Forks your repo on github",
+        "body" : "Sets to private"
+}
+{
+        "_id" : ObjectId("61e858f07690fb7501862571"),
+        "username" : "ScumbagSteve",
+        "title" : "Borrows something",
+        "body" : "Sells it"
+}
+{
+        "_id" : ObjectId("61e858f07690fb7501862572"),
+        "username" : "ScumbagSteve",
+        "title" : "Borrows everything",
+        "body" : "The end"
+}
+{
+        "_id" : ObjectId("61e858f07690fb7501862573"),
+        "username" : "ScumbagSteve",
+        "title" : "Forks your repo on github",
+        "body" : "Sets to private"
+}
+> db.comments.find().pretty()
+{
+        "_id" : ObjectId("61e84ea3f58823dc26fca2e3"),
+        "username" : "GoodGuyGreg",
+        "comment" : "Hope you got a good deal!",
+        "post" : "61e5c67bc04247c55c3dff83"
+}
+{
+        "_id" : ObjectId("61e84ea3f58823dc26fca2e4"),
+        "username" : "GoodGuyGreg",
+        "comment" : "What's mine is yours!",
+        "post" : "61e5c67bc04247c55c3dff84"
+}
+{
+        "_id" : ObjectId("61e84ea3f58823dc26fca2e5"),
+        "username" : "GoodGuyGreg",
+        "comment" : "Don't violate the licensing agreement!",
+        "post" : "61e5c67bc04247c55c3dff85"
+}
+{
+        "_id" : ObjectId("61e84ea3f58823dc26fca2e6"),
+        "username" : "ScumbagSteve",
+        "comment" : "It still isn't clean",
+        "post" : "61e5c67bc04247c55c3dff80"
+}
+{
+        "_id" : ObjectId("61e84ea3f58823dc26fca2e7"),
+        "username" : "ScumbagSteve",
+        "comment" : "Denied your PR cause I found a hack",
+        "post" : "61e5c67bc04247c55c3dff82"
+}
+{
+        "_id" : ObjectId("61e859117690fb7501862574"),
+        "username" : "GoodGuyGreg",
+        "comment" : "Hope you got a good deal!",
+        "post" : "61e5c67bc04247c55c3dff83"
+}
+{
+        "_id" : ObjectId("61e859117690fb7501862575"),
+        "username" : "GoodGuyGreg",
+        "comment" : "What's mine is yours!",
+        "post" : "61e5c67bc04247c55c3dff84"
+}
+{
+        "_id" : ObjectId("61e859117690fb7501862576"),
+        "username" : "GoodGuyGreg",
+        "comment" : "Don't violate the licensing agreement!",
+        "post" : "61e5c67bc04247c55c3dff85"
+}
+{
+        "_id" : ObjectId("61e859117690fb7501862577"),
+        "username" : "ScumbagSteve",
+        "comment" : "It still isn't clean",
+        "post" : "61e5c67bc04247c55c3dff80"
+}
+{
+        "_id" : ObjectId("61e859117690fb7501862578"),
+        "username" : "ScumbagSteve",
+        "comment" : "Denied your PR cause I found a hack",
+        "post" : "61e5c67bc04247c55c3dff82"
+}
+> db.comments.find({username: "GoodGuyGreg"})
+{ "_id" : ObjectId("61e84ea3f58823dc26fca2e3"), "username" : "GoodGuyGreg", "comment" : "Hope you got a good deal!", "post" : "61e5c67bc04247c55c3dff83" }
+{ "_id" : ObjectId("61e84ea3f58823dc26fca2e4"), "username" : "GoodGuyGreg", "comment" : "What's mine is yours!", "post" : "61e5c67bc04247c55c3dff84" }
+{ "_id" : ObjectId("61e84ea3f58823dc26fca2e5"), "username" : "GoodGuyGreg", "comment" : "Don't violate the licensing agreement!", "post" : "61e5c67bc04247c55c3dff85" }
+{ "_id" : ObjectId("61e859117690fb7501862574"), "username" : "GoodGuyGreg", "comment" : "Hope you got a good deal!", "post" : "61e5c67bc04247c55c3dff83" }
+{ "_id" : ObjectId("61e859117690fb7501862575"), "username" : "GoodGuyGreg", "comment" : "What's mine is yours!", "post" : "61e5c67bc04247c55c3dff84" }
+{ "_id" : ObjectId("61e859117690fb7501862576"), "username" : "GoodGuyGreg", "comment" : "Don't violate the licensing agreement!", "post" : "61e5c67bc04247c55c3dff85" }
+> db.comments.find({username: "ScumbagSteve"})
+{ "_id" : ObjectId("61e84ea3f58823dc26fca2e6"), "username" : "ScumbagSteve", "comment" : "It still isn't clean", "post" : "61e5c67bc04247c55c3dff80" }
+{ "_id" : ObjectId("61e84ea3f58823dc26fca2e7"), "username" : "ScumbagSteve", "comment" : "Denied your PR cause I found a hack", "post" : "61e5c67bc04247c55c3dff82" }
+{ "_id" : ObjectId("61e859117690fb7501862577"), "username" : "ScumbagSteve", "comment" : "It still isn't clean", "post" : "61e5c67bc04247c55c3dff80" }
+{ "_id" : ObjectId("61e859117690fb7501862578"), "username" : "ScumbagSteve", "comment" : "Denied your PR cause I found a hack", "post" : "61e5c67bc04247c55c3dff82" }
+> db.comments.find({post :"61e5c67bc04247c55c3dff82"}).pretty
+function() {
+    this._prettyShell = true;
+    return this;
+}
+> db.comments.find({post :"61e5c67bc04247c55c3dff82"}).pretty()
+{
+        "_id" : ObjectId("61e84ea3f58823dc26fca2e7"),
+        "username" : "ScumbagSteve",
+        "comment" : "Denied your PR cause I found a hack",
+        "post" : "61e5c67bc04247c55c3dff82"
+}
+{
+        "_id" : ObjectId("61e859117690fb7501862578"),
+        "username" : "ScumbagSteve",
+        "comment" : "Denied your PR cause I found a hack",
+        "post" : "61e5c67bc04247c55c3dff82"
+}
+>
+
+
+
